@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Reveal } from "./components/Reveal";
 import { StatusCard } from "./components/StatusCard";
+import { Logo } from "./components/Logo";
 import { callApi, type ApiResult } from "@/lib/client";
 import { detectPlan } from "@/lib/plan";
 
@@ -27,6 +28,9 @@ export default function ActivatePage() {
     <>
       {/* Hero */}
       <Reveal className="hero" delay={0}>
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
+          <Logo size={64} />
+        </div>
         <span className="eyebrow">
           <span className="dot" /> 质保订阅成功
         </span>

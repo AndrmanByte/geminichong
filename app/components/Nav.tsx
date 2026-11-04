@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Logo } from "./Logo";
 
 const LINKS = [
   { href: "/", label: "激活" },
@@ -15,7 +16,7 @@ export function Nav() {
     <nav className="nav">
       <div className="nav-inner">
         <Link href="/" className="nav-brand" style={{ textDecoration: "none", color: "inherit" }}>
-          <span className="nav-logo" aria-hidden />
+          <Logo size={30} />
           <span>Gemini Pro Pixel</span>
         </Link>
         <div className="nav-links">
