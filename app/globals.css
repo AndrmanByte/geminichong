@@ -438,32 +438,141 @@ input:focus, textarea:focus {
 
 /* ---------- 教程配图 ---------- */
 .guide-figure {
+  position: relative;
   display: block;
-  margin: 14px 0 6px;
-  border-radius: var(--radius-sm);
+  width: 100%;
+  margin: 0;
+  padding: 0;
   border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   overflow: hidden;
+  background: var(--bg-soft);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.35s var(--ease), box-shadow 0.35s;
+  cursor: zoom-in;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s, border-color 0.35s;
 }
 .guide-figure:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
+  border-color: var(--border-strong);
 }
 .guide-figure img {
   width: 100%;
   height: auto;
   display: block;
-  background: var(--bg-soft);
 }
+.guide-figure-zoom {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  color: #fff;
+  background: rgba(21, 23, 31, 0.55);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.guide-figure:hover .guide-figure-zoom {
+  opacity: 1;
+  transform: none;
+}
+/* 每张图单独一行、默认放大展示 */
 .guide-figure-row {
   display: grid;
-  gap: 12px;
-  margin-top: 10px;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 14px;
 }
-@media (min-width: 640px) {
-  .guide-figure-row.two { grid-template-columns: 1fr 1fr; }
+
+/* ---------- 灯箱 Lightbox ---------- */
+.lb-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(10, 12, 20, 0.82);
+  backdrop-filter: blur(6px);
+  animation: lb-in 0.22s var(--ease);
 }
+@keyframes lb-in { from { opacity: 0; } to { opacity: 1; } }
+.lb-stage {
+  max-width: 94vw;
+  max-height: 86vh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  touch-action: none;
+}
+.lb-img {
+  max-width: 94vw;
+  max-height: 86vh;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.6);
+  user-select: none;
+  will-change: transform;
+}
+.lb-toolbar {
+  position: fixed;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(21, 23, 31, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+}
+.lb-btn {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.lb-btn:hover { background: rgba(255, 255, 255, 0.22); }
+.lb-scale {
+  min-width: 52px;
+  text-align: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.lb-close {
+  position: fixed;
+  top: 20px;
+  right: 22px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(21, 23, 31, 0.6);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.2s, transform 0.2s;
+}
+.lb-close:hover { background: rgba(21, 23, 31, 0.9); transform: rotate(90deg); }
 
 /* ---------- 响应式 ---------- */
 @media (max-width: 720px) {

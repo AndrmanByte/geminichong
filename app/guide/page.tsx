@@ -160,7 +160,7 @@ export default function GuidePage() {
                   <span className="tl-dot">{i + 1}</span>
                   <h3>{s.t}</h3>
                   <p style={{ color: "var(--text-dim)", fontSize: 14 }}>{s.d}</p>
-                  <div className={`guide-figure-row${s.imgs.length === 2 ? " two" : ""}`}>
+                  <div className="guide-figure-row">
                     {s.imgs.map((img) => (
                       <GuideFigure key={img.src} src={img.src} alt={img.alt} />
                     ))}
