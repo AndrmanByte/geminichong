@@ -16,8 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         <main className="shell">{children}</main>
         <footer className="footer shell" style={{ paddingBottom: 40 }}>
-          <p>服务器不保存你的账号密码和 2FA 密钥，仅用于本次激活转发。请自行保存好账号信息。</p>
-          <p style={{ marginTop: 6 }}>Gemini Pro Pixel · 由苏哲AI 提供激活服务</p>
+          <p>服务器不保存你的账号密码和 2FA 密钥。请自行保存好账号信息。</p>
         </footer>
       </body>
     </html>
