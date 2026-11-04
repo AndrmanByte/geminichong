@@ -46,35 +46,31 @@ const COMMON = [
 const TWOFA_STEPS = [
   {
     t: "2.1 进入 Google 账户设置",
-    d: "① 在 Gemini 页面点右上角头像（PRO 标识旁边）。② 点「Manage your Google Account」（管理你的 Google 账号）。",
-    imgs: [
-      { src: "/geminiverify/step1.webp", alt: "Gemini 页面右上角头像" },
-      { src: "/geminiverify/step2.webp", alt: "Manage your Google Account" },
+    subs: [
+      { d: "① 在 Gemini 页面点右上角头像（PRO 标识旁边）。", src: "/geminiverify/step1.webp", alt: "Gemini 页面右上角头像" },
+      { d: "② 点「Manage your Google Account」（管理你的 Google 账号）。", src: "/geminiverify/step2.webp", alt: "Manage your Google Account" },
     ],
   },
   {
     t: "2.2 找到「身份验证器」",
-    d: "③ 左侧点「Security & sign-in」（安全性与登录）。④ 往下找到「身份验证器」，点进去。",
-    imgs: [
-      { src: "/geminiverify/step3.webp", alt: "Security & sign-in" },
-      { src: "/geminiverify/step4.webp", alt: "身份验证器 Authenticator" },
+    subs: [
+      { d: "③ 左侧点「Security & sign-in」（安全性与登录）。", src: "/geminiverify/step3.webp", alt: "Security & sign-in" },
+      { d: "④ 往下找到「身份验证器」，点进去。", src: "/geminiverify/step4.webp", alt: "身份验证器 Authenticator" },
     ],
   },
   {
     t: "2.3 设置新的身份验证器，拿到密钥",
-    d: "⑤ 点「+ 设置身份验证器」。⑥ 弹出二维码时点「无法扫描？」显示密钥。⑦ 把密钥粘贴到 2fa.run 获取验证码，并复制无空格的密钥保存好。",
-    imgs: [
-      { src: "/geminiverify/step5.webp", alt: "设置身份验证器" },
-      { src: "/geminiverify/step6.webp", alt: "二维码弹窗与无法扫描" },
-      { src: "/geminiverify/step7.webp", alt: "2fa.run 复制密钥" },
+    subs: [
+      { d: "⑤ 点「+ 设置身份验证器」。", src: "/geminiverify/step5.webp", alt: "设置身份验证器" },
+      { d: "⑥ 弹出二维码时点「无法扫描？」，页面会显示一串密钥。", src: "/geminiverify/step6.webp", alt: "二维码弹窗与无法扫描" },
+      { d: "⑦ 把密钥粘贴到 2fa.run 获取验证码，并复制下面那串无空格的密钥保存好。", src: "/geminiverify/step7.webp", alt: "2fa.run 复制密钥" },
     ],
   },
   {
     t: "2.4 输入验证码，点「验证」",
-    d: "⑧ 把 2fa.run 显示的 6 位验证码填进去，点「验证」。务必点验证，新 2FA 才生效。⑨ 看到「两步验证」已启用即完成。",
-    imgs: [
-      { src: "/geminiverify/step8.webp", alt: "输入验证码" },
-      { src: "/geminiverify/step9.webp", alt: "两步验证已启用" },
+    subs: [
+      { d: "⑧ 把 2fa.run 显示的 6 位验证码填进去，点「验证」。务必点验证，新 2FA 才生效。", src: "/geminiverify/step8.webp", alt: "输入验证码" },
+      { d: "⑨ 看到「两步验证」显示已启用，就完成了。", src: "/geminiverify/step9.webp", alt: "两步验证已启用" },
     ],
   },
 ] as const;
@@ -159,10 +155,12 @@ export default function GuidePage() {
                 <div className="tl-item" key={s.t}>
                   <span className="tl-dot">{i + 1}</span>
                   <h3>{s.t}</h3>
-                  <p style={{ color: "var(--text-dim)", fontSize: 14 }}>{s.d}</p>
-                  <div className="guide-figure-row">
-                    {s.imgs.map((img) => (
-                      <GuideFigure key={img.src} src={img.src} alt={img.alt} />
+                  <div className="guide-sub-list">
+                    {s.subs.map((sub) => (
+                      <div className="guide-sub" key={sub.src}>
+                        <p style={{ color: "var(--text-dim)", fontSize: 14 }}>{sub.d}</p>
+                        <GuideFigure src={sub.src} alt={sub.alt} />
+                      </div>
                     ))}
                   </div>
                 </div>

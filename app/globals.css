@@ -488,6 +488,16 @@ input:focus, textarea:focus {
   gap: 16px;
   margin-top: 14px;
 }
+/* 每个小步：一句话 + 它对应的那张图 */
+.guide-sub-list {
+  display: grid;
+  gap: 22px;
+  margin-top: 6px;
+}
+.guide-sub {
+  display: grid;
+  gap: 10px;
+}
 
 /* ---------- 灯箱 Lightbox ---------- */
 .lb-overlay {
