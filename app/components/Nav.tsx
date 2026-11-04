@@ -13,16 +13,18 @@ export function Nav() {
   const pathname = usePathname();
   return (
     <nav className="nav">
-      <Link href="/" className="nav-brand" style={{ textDecoration: "none", color: "inherit" }}>
-        <span className="nav-logo" aria-hidden />
-        <span>Gemini Pro Pixel</span>
-      </Link>
-      <div className="nav-links">
-        {LINKS.map((l) => (
-          <Link key={l.href} href={l.href} className={pathname === l.href ? "active" : ""}>
-            {l.label}
-          </Link>
-        ))}
+      <div className="nav-inner">
+        <Link href="/" className="nav-brand" style={{ textDecoration: "none", color: "inherit" }}>
+          <span className="nav-logo" aria-hidden />
+          <span>Gemini Pro Pixel</span>
+        </Link>
+        <div className="nav-links">
+          {LINKS.map((l) => (
+            <Link key={l.href} href={l.href} className={pathname === l.href ? "active" : ""}>
+              {l.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </nav>
   );
