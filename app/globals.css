@@ -436,6 +436,35 @@ input:focus, textarea:focus {
 
 .footer { margin-top: 64px; text-align: center; color: var(--text-faint); font-size: 13px; }
 
+/* ---------- 教程配图 ---------- */
+.guide-figure {
+  display: block;
+  margin: 14px 0 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s;
+}
+.guide-figure:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.guide-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--bg-soft);
+}
+.guide-figure-row {
+  display: grid;
+  gap: 12px;
+  margin-top: 10px;
+}
+@media (min-width: 640px) {
+  .guide-figure-row.two { grid-template-columns: 1fr 1fr; }
+}
+
 /* ---------- 响应式 ---------- */
 @media (max-width: 720px) {
   .benefits { grid-template-columns: 1fr; }
